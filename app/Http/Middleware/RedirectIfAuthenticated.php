@@ -15,15 +15,13 @@ class RedirectIfAuthenticated
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
+    public function handle(Request $request, Closure $next ): Response
     {
-        $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+            if (Auth::check()) {
+                return redirect(RouteServiceProvider::HOME)->with(['token'=> session('token')]);
             }
-        }
+            // redirection si le token est existant / user connecté d'apres le custom provider
 
         return $next($request);
     }
