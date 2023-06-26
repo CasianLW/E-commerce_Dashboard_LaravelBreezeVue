@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthSessionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,19 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/users', function () {
+    return Inertia::render('Users');
+})->middleware(['auth', 'verified'])->name('users');
+Route::get('/games', function () {
+    return Inertia::render('Games');
+})->middleware(['auth', 'verified'])->name('games');
+Route::get('/news', function () {
+    return Inertia::render('News');
+})->middleware(['auth', 'verified'])->name('news');
 
 Route::middleware('auth')->group(function () {
+
+    Route::post('/logout', [AuthSessionController::class, 'destroy'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
