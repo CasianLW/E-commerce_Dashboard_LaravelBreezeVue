@@ -55,7 +55,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'guzzle_api_url' => env('GUZZLE_API_URL', 'http://127.0.0.1:3000/api'),
+
+    'url' => env('APP_URL', 'http://localhost:8000'),
 
     'asset_url' => env('ASSET_URL'),
 
