@@ -16,6 +16,16 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
-        @inertia
+    @inertia
+    <script>
+        @if(session('token'))
+            localStorage.setItem('token', '{{ session("token") }}');
+        // window.location.href = '/';
+        @else
+            localStorage.removeItem('token');
+        @endif
+    </script>
     </body>
 </html>
+
+
