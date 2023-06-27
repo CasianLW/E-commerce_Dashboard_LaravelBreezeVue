@@ -8,14 +8,16 @@ export const useNewsStore = defineStore({
     id: "news",
     state: () => ({
         news: [],
+        new: {},
+        message: "",
     }),
     actions: {
         async fetchNews() {
             const response = await api.getEvents();
-            console.log(response);
+            // console.log(response);
             // coawait api.getEvents();
             this.news = response;
-            console.log(this.news);
+            // console.log(this.news);
             // return response;
         },
         async createNews(data) {
@@ -23,11 +25,14 @@ export const useNewsStore = defineStore({
             this.fetchNews();
         },
         async getNews(id) {
-            await api.eventById(id);
+            this.new = {};
+            const response = await api.eventById(id);
+            this.new = response.event;
         },
         async editNews(id, data) {
-            await api.editEventById(id, data);
-            this.fetchNews();
+            const response = await api.editEventById(id, data);
+            this.message = response.message;
+            this.getNews(id);
         },
         async deleteNews(id) {
             await api.deleteEventById(id);
