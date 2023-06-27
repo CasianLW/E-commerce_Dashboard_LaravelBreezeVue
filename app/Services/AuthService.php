@@ -67,12 +67,13 @@ class AuthService
         return ['success'=> false, 'error'=> $e->getMessage()];
     }
 }
-
 public function getUserByToken(string $token): array
 {
     try {
         // $response = $this->client->get('user', [
-        $response = $this->client->get('http://127.0.0.1:3000/api/admin', [
+        // $response = $this->client->get('http://127.0.0.1:3000/api/admin', [
+            $response = $this->client->get(config('app.guzzle_api_url').'/admin', [
+
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
             ],
