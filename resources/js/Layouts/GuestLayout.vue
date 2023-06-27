@@ -1,10 +1,19 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import { Link } from '@inertiajs/vue3';
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+    <div
+        style="
+            background: radial-gradient(
+                138.74% 86.78% at 61.07% 7.08%,
+                rgba(116, 88, 234, 0.5) 0%,
+                rgba(211, 254, 87, 0.5) 100%
+            );
+        "
+        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900"
+    >
         <div>
             <Link href="/">
                 <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
