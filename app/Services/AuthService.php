@@ -23,7 +23,10 @@ class AuthService
     }
     public function login(array $credentials): array 
     {
+
+        Log::info("Login start ");
         Log::info("Login: ", $credentials);
+        // var_dump("credentials: " . print_r($credentials, true));
         try {
             // $response = $this->client->post('http://127.0.0.1:3000/api/auth/login', [
             //     'json' => $credentials
@@ -35,7 +38,12 @@ class AuthService
             $body = json_decode($response->getBody()->getContents(), true);
         Log::info("body: ", $body);
 
+        // var_dump("credentials: " . print_r($body['token'], true));
+        // die();
             return ['success'=> true, 'token'=> $body['token']];
+
+
+
 
 
         } catch (GuzzleException $th) {
