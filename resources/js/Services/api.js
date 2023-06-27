@@ -40,6 +40,8 @@ adminApi.interceptors.request.use(
                 /(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/,
                 "$1"
             );
+        console.log("test adminApi");
+
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
         }
@@ -117,19 +119,19 @@ export default {
             .catch((e) => console.log("error get user")),
     createUser: async (data) =>
         adminApi
-            .put(`/users`, data)
+            .post(`/users`, data)
             .then((r) => r.data)
             .catch((e) => console.log("error creating user")),
-    editUserById: async (id) =>
+    editUserById: async (id, data) =>
         adminApi
-            .put(`/users/${id}`)
+            .put(`/users/${id}`, data)
             .then((r) => r.data)
             .catch((e) => console.log("error edit user")),
     deleteUserById: async (id) =>
         adminApi
-            .get(`/users/${id}`)
+            .delete(`/users/${id}`)
             .then((r) => r.data)
-            .catch((e) => console.log("error get user")),
+            .catch((e) => console.log("error delete user")),
     //
     // Methodes pour les actualités
     //
@@ -145,19 +147,19 @@ export default {
             .catch((e) => console.log("error get event")),
     createEvent: async (data) =>
         adminApi
-            .put(`/events`, data)
+            .post(`/events`, data)
             .then((r) => r.data)
             .catch((e) => console.log("error creating event")),
-    editEventById: async (id) =>
+    editEventById: async (id, data) =>
         adminApi
-            .put(`/events/${id}`)
+            .put(`/events/${id}`, data)
             .then((r) => r.data)
             .catch((e) => console.log("error edit event")),
     deleteEventById: async (id) =>
         adminApi
-            .get(`/events/${id}`)
+            .delete(`/events/${id}`)
             .then((r) => r.data)
-            .catch((e) => console.log("error get event")),
+            .catch((e) => console.log("error delete event")),
 };
 
 // async fetchNews() {
