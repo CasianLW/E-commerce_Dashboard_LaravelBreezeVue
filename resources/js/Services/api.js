@@ -160,6 +160,32 @@ export default {
             .delete(`/events/${id}`)
             .then((r) => r.data)
             .catch((e) => console.log("error delete event")),
+    // Methods for purchases
+    getPurchases: async () =>
+        adminApi
+            .get(`/purchases`)
+            .then((r) => r.data)
+            .catch((e) => console.log("error getting purchases")),
+    getPurchaseById: async (id) =>
+        adminApi
+            .get(`/purchases/${id}`)
+            .then((r) => r.data)
+            .catch((e) => console.log(`error getting purchase ${id}`)),
+    createPurchase: async (data) =>
+        adminApi
+            .post(`/purchases`, data)
+            .then((r) => r.data)
+            .catch((e) => console.log("error creating purchase")),
+    editPurchaseById: async (id, data) =>
+        adminApi
+            .put(`/purchases/${id}`, data)
+            .then((r) => r.data)
+            .catch((e) => console.log(`error editing purchase ${id}`)),
+    deletePurchaseById: async (id) =>
+        adminApi
+            .delete(`/purchases/${id}`)
+            .then((r) => r.data)
+            .catch((e) => console.log(`error deleting purchase ${id}`)),
 };
 
 // async fetchNews() {
