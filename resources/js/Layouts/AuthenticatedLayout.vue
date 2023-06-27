@@ -13,7 +13,16 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div>
         <ToastList />
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div
+            style="
+                background: radial-gradient(
+                    138.74% 86.78% at 61.07% 7.08%,
+                    rgba(116, 88, 234, 0.5) 0%,
+                    rgba(211, 254, 87, 0.5) 100%
+                );
+            "
+            class="min-h-screen bg-gray-100 dark:bg-gray-900"
+        >
             <nav
                 class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700"
             >
@@ -46,17 +55,23 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Users
                                 </NavLink>
-                                <NavLink
+                                <!-- <NavLink
                                     :href="route('games')"
                                     :active="route().current('games')"
                                 >
                                     Games
-                                </NavLink>
+                                </NavLink> -->
                                 <NavLink
                                     :href="route('news')"
                                     :active="route().current('news')"
                                 >
                                     News
+                                </NavLink>
+                                <NavLink
+                                    :href="route('payments')"
+                                    :active="route().current('payments')"
+                                >
+                                    Paiements
                                 </NavLink>
                             </div>
                         </div>
