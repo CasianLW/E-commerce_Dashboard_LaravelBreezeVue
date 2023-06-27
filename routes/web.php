@@ -38,6 +38,20 @@ Route::get('/games', function () {
 Route::get('/news', function () {
     return Inertia::render('News');
 })->middleware(['auth', 'verified'])->name('news');
+Route::get('/users/{id}', function ($id) {
+    return Inertia::render('UserEdit', ['id' => $id]);
+})->middleware(['auth', 'verified'])->name('user.edit');
+
+Route::get('/news/{id}', function ($id) {
+    return Inertia::render('NewsEdit', ['id' => $id]);
+})->middleware(['auth', 'verified'])->name('news.edit');
+
+Route::get('/payments', function () {
+    return Inertia::render('Payments');
+})->middleware(['auth', 'verified'])->name('payments');
+Route::get('/payments/{id}', function ($id) {
+    return Inertia::render('PaymentEdit', ['id' => $id]);
+})->middleware(['auth', 'verified'])->name('payments.edit');
 
 Route::middleware('auth')->group(function () {
 
